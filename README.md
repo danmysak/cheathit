@@ -34,16 +34,16 @@ cheathit /submission/directory > /path/to/file
 
 #### `--path`
 
-Specify the structure of the submission directory with this parameter. Use `student`, `group`, `problem`, `attempt` separated with slashes, e.g.,  `student/group/student/student/attempt`. Each subsequent section gets CheatHit one level down the directory structure; the last level must be a file containing the submission.
+Specify the structure of the submission directory with this parameter. Use the `student`, `group`, `problem`, `attempt` sections separated with slashes, e.g.,  `group/student/problem/problem/attempt`. Each subsequent section gets CheatHit one level down the directory tree; the last level must be a file containing the submission.
 
 - `student` corresponds to the set of programs submitted by an individual student;
 - `group` corresponds to a group of students such that cheating is likely to take place within such a group (e.g., a school class);
-- `problem` corresponds to a unit part of the assignment;
+- `problem` corresponds to a separate task shared by the students;
 - `attempt` corresponds to a separate submission of a student.
 
 The `student` section is required (i.e., there should be at least one of these in `--path`); the other three sections are optional. If the same section appears in `--path` multiple times, CheatHit will simply concatenate its values to obtain the “true” representation of the section.
 
-The default value of `--path` is simply `student`, which is suitable for the case when there is one directory with many files, one file per student.
+The default value of `--path` is `student`, which is suitable for cases when there is a single directory with many files, one file per student.
 
 #### `--min-ngram`
 
@@ -69,9 +69,9 @@ If a sequence of tokens occurs in submissions of more than `--max-clique` studen
 
 The default value of `--max-clique` is:
 
-- `2` if students are split into groups ([`--path`](#--path) includes `group`),
+- `2` if students are assigned groups ([`--path`](#--path) includes `group`),
 - `5` otherwise.
 
 ### Results
 
-For each pair of students CheatHit will report how much of the two student’s code is shared while adjusting for how distinctive the shared code is. See the [Parameters](#Parameters) section above for an insight into what CheatHit considers distinctive.
+For each pair of students CheatHit will report how much code is shared between the students while adjusting for how distinctive the shared code is. See the [Parameters](#Parameters) section above for an insight into what CheatHit considers distinctive.
