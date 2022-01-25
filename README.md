@@ -59,7 +59,7 @@ The default value of `--max-ngram` is `20`.
 
 #### `--min-ratio`
 
-Minimum ratio of the number of [tokens](#Tokenization) shared by two submissions to the number of tokens in the longer of the submissions that is required to include the pair in the report.
+Minimum ratio of the number of [tokens](#Tokenization) shared by two submissions to the number of tokens in the longer of the submissions required so that the pair is included in the report.
 
 The default value of `--min-ratio` is `0.2`.
 
@@ -72,10 +72,9 @@ The default value of `--max-clique` is:
 - `2` if students are assigned groups ([`--path`](#--path) includes `group`),
 - `5` otherwise.
 
-
 ### Tokenization
 
-CheatHit tokenizes source code into alphanumeric words (which can also contain underscores) and non-alphanumeric characters. Whitespace, semicolons, and commas are ignored. Two special tokens, `<START>` and `<END>`, are added to the beginning and end of a sequence. Hence,
+CheatHit tokenizes source code into alphanumeric words (which can also contain underscores) and non-alphanumeric characters. Whitespace, semicolons, and commas are ignored. Two special markers, `<START>` and `<END>`, are added to the beginning and end of a token sequence. Hence,
 
 ```
 CheatHit supports C++, Python v2 & v3, and _even_ VB.NET; awesome!
@@ -87,7 +86,6 @@ would be tokenized as
 ['<START>', 'CheatHit', 'supports', 'C', '+', '+', 'Python', 'v2', '&', 'v3', 'and', '_even_', 'VB', '.', 'NET', 'awesome', '!', '<END>']
 ```
 
-
 ### Results
 
-For each pair of students CheatHit will report how much code is shared between the students while adjusting for how distinctive the shared code is. See the [Parameters](#Parameters) section above for an insight into what CheatHit considers distinctive.
+For each pair of students CheatHit will report how much code is shared between the students while adjusting for how distinctive the shared code is. See the [Parameters](#Parameters) and [Tokenization](#Tokenization) sections above for an insight into what CheatHit considers distinctive.
