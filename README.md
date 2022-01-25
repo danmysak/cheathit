@@ -18,7 +18,7 @@ Run CheatHit as follows:
 cheathit /submission/directory
 ```
 
-Or with [command line arguments](`#Parameters`):
+Or with [command line arguments](#Parameters):
 
 ```bash
 cheathit /submission/directory --path=group/student/problem/attempt --min-ngram=3 --max-ngram=10 --min-ratio=0.5 --max-clique=4
@@ -69,7 +69,7 @@ If a sequence of tokens occurs in submissions of more than `--max-clique` studen
 
 The default value of `--max-clique` is:
 
-- `2` if students are split into groups ([`--path`](#`--path`) includes `group`),
+- `2` if students are split into groups ([`--path`](#--path) includes `group`),
 - `5` otherwise.
 
 ### Results
