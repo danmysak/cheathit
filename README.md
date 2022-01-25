@@ -2,10 +2,76 @@
 
 ## Installation
 
-```
+Install [Python](https://www.python.org/downloads/) 3.9 or higher, then run:
+
+```bash
 pip install cheathit
 ```
 
 ## Usage
 
-TODO
+### Running
+
+Run CheatHit as follows:
+
+```bash
+cheathit /submission/directory
+```
+
+Or with [command line arguments](`#Parameters`):
+
+```bash
+cheathit /submission/directory --path=group/student/problem/attempt --min-ngram=3 --max-ngram=10 --min-ratio=0.5 --max-clique=4
+```
+
+Or, if you want to save results to a file:
+
+```bash
+cheathit /submission/directory > /path/to/file
+```
+
+### Parameters
+
+#### `--path`
+
+Specify the structure of the submission directory with this parameter. Use `student`, `group`, `problem`, `attempt` separated with slashes, e.g.,  `student/group/student/student/attempt`. Each subsequent section gets CheatHit one level down the directory structure; the last level must be a file containing the submission.
+
+- `student` corresponds to the set of programs submitted by an individual student;
+- `group` corresponds to a group of students such that cheating is likely to take place within such a group (e.g., a school class);
+- `problem` corresponds to a unit part of the assignment;
+- `attempt` corresponds to a separate submission of a student.
+
+The `student` section is required (i.e., there should be at least one of these in `--path`); the other three sections are optional. If the same section appears in `--path` multiple times, CheatHit will simply concatenate its values to obtain the “true” representation of the section.
+
+The default value of `--path` is simply `student`, which is suitable for the case when there is one directory with many files, one file per student.
+
+#### `--min-ngram`
+
+Minimum number of consecutive tokens (alphanumeric words and non-alphanumeric characters) to analyze across the submissions.
+
+The default value of `--min-ngram` is `1`.
+
+#### `--max-ngram`
+
+Maximum number of consecutive tokens (alphanumeric words and non-alphanumeric characters) to analyze across the submissions.
+
+The default value of `--max-ngram` is `20`.
+
+#### `--min-ratio`
+
+Minimum ratio of the number of tokens shared by two submissions to the number of tokens in the longer of the submissions that is required to include the pair in the report.
+
+The default value of `--min-ratio` is `0.2`.
+
+#### `--max-clique`
+
+If a sequence of tokens occurs in submissions of more than `--max-clique` students (or in submissions of students from more than `--max-clique` groups), it is not considered distinctive.
+
+The default value of `--max-clique` is:
+
+- `2` if students are split into groups ([`--path`](#`--path`) includes `group`),
+- `5` otherwise.
+
+### Results
+
+For each pair of students CheatHit will report how much of the two student’s code is shared while adjusting for how distinctive the shared code is. See the [Parameters](#Parameters) section above for an insight into what CheatHit considers distinctive.
