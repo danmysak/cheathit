@@ -34,7 +34,7 @@ cheathit /submission/directory > /path/to/file
 
 #### `--path`
 
-Specify the structure of the submission directory with this parameter. Use the `student`, `group`, `problem`, `attempt` sections separated with slashes, e.g.,  `group/student/problem/problem/attempt`. Each subsequent section gets CheatHit one level down the directory tree; the last level must be a file containing the submission.
+Specify the structure of the submission directory with this parameter. Use the `student`, `group`, `problem`, and `attempt` sections separated with slashes, e.g.,  `group/group/student/problem/problem/attempt`. Each subsequent section gets CheatHit one level down the directory tree; the last level must be a file containing the submission.
 
 - `student` corresponds to the set of programs submitted by an individual student;
 - `group` corresponds to a group of students such that cheating is likely to take place within such a group (e.g., a school class);
