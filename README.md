@@ -47,30 +47,46 @@ The default value of `--path` is `student`, which is suitable for cases when the
 
 #### `--min-ngram`
 
-Minimum number of consecutive tokens (alphanumeric words and non-alphanumeric characters) to analyze across the submissions.
+Minimum ngram size (number of consecutive [tokens](#Tokenization)) to analyze across the submissions.
 
 The default value of `--min-ngram` is `1`.
 
 #### `--max-ngram`
 
-Maximum number of consecutive tokens (alphanumeric words and non-alphanumeric characters) to analyze across the submissions.
+Maximum ngram size (number of consecutive [tokens](#Tokenization)) to analyze across the submissions.
 
 The default value of `--max-ngram` is `20`.
 
 #### `--min-ratio`
 
-Minimum ratio of the number of tokens shared by two submissions to the number of tokens in the longer of the submissions that is required to include the pair in the report.
+Minimum ratio of the number of [tokens](#Tokenization) shared by two submissions to the number of tokens in the longer of the submissions that is required to include the pair in the report.
 
 The default value of `--min-ratio` is `0.2`.
 
 #### `--max-clique`
 
-If a sequence of tokens occurs in submissions of more than `--max-clique` students (or in submissions of students from more than `--max-clique` groups), it is not considered distinctive.
+If an ngram (a sequence of [tokens](#Tokenization)) occurs in submissions of more than `--max-clique` students (or in submissions of students from more than `--max-clique` groups), it is not considered distinctive.
 
 The default value of `--max-clique` is:
 
 - `2` if students are assigned groups ([`--path`](#--path) includes `group`),
 - `5` otherwise.
+
+
+### Tokenization
+
+CheatHit tokenizes source code into alphanumeric words (which can also contain underscores) and non-alphanumeric characters. Whitespace, semicolons, and commas are ignored. Two special tokens, `<START>` and `<END>`, are added to the beginning and end of a sequence. Hence,
+
+```
+CheatHit supports C++, Python v2 & v3, and _even_ VB.NET; awesome!
+```
+
+would be tokenized as
+
+```
+['<START>', 'CheatHit', 'supports', 'C', '+', '+', 'Python', 'v2', '&', 'v3', 'and', '_even_', 'VB', '.', 'NET', 'awesome', '!', '<END>']
+```
+
 
 ### Results
 
