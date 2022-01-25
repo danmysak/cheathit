@@ -118,3 +118,4 @@ def run() -> None:
             print(numeral(submission_match.common_tokens, 'common token')
                   + ' / ' + numeral(len(submission_match.longest_ngram), 'token') + ' in the longest match:')
             print(' '.join(submission_match.longest_ngram))
+    log('Analysis complete')
