@@ -18,7 +18,7 @@ Run CheatHit as follows:
 cheathit /submission/directory
 ```
 
-Or with [command line arguments](#parameters):
+Or with [parameters](#parameters):
 
 ```bash
 cheathit /submission/directory --path=group/student/problem/attempt --min-ngram=3 --max-ngram=10 --min-ratio=0.5 --max-clique=4
