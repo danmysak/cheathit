@@ -142,7 +142,7 @@ def analyze(root: Path, components: tuple[str, ...], min_n: int, max_n: int, min
 
     for index, (file, mapping) in enumerate(submissions):
         tracker(f'Loading {file} ({index + 1} of {len(submissions)})...')
-        tokens = parse(file.read_text())
+        tokens = parse(file.read_text(encoding='utf-8'))
         ngrams = NgramCollection(tokens, min_n, max_n)
 
         group = mapping.get(GROUP, mapping[STUDENT])
